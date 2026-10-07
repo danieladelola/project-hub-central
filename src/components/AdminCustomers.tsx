@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { AdminAccounts } from "@/components/AdminAccounts";
 import { AdminSessions } from "@/components/AdminSessions";
-import { adminCustomerControl, adminDeleteCustomer, adminGetCustomer, adminSearchCustomers, adminUpdateCustomer } from "@/lib/admin.functions";
+import { adminCustomerControl, adminDeleteCustomer, adminGetCustomer, adminLoginAsCustomer, adminSearchCustomers, adminUpdateCustomer } from "@/lib/admin.functions";
 import { formatMinor, fmtDate } from "@/lib/money";
 import { cn } from "@/lib/utils";
 
@@ -75,6 +75,13 @@ function CustomerDetail({ userId, onBack }: { userId: number; onBack: () => void
   const get = useServerFn(adminGetCustomer);
   const control = useServerFn(adminCustomerControl);
   const del = useServerFn(adminDeleteCustomer);
+  const loginAs = useServerFn(adminLoginAsCustomer);
+  async function signInAs() {
+    if (!window.confirm("Sign in as this customer? You will be signed out of admin.")) return;
+    setBusy(true); setMsg(null);
+    try { const r = await loginAs({ data: { userId } }); if (!r.ok) { setMsg({ ok: false, text: r.error }); return; } window.location.href = "/account"; }
+    catch (e) { setMsg({ ok: false, text: errText(e) }); } finally { setBusy(false); }
+  }
   const [d, setD] = useState<Detail | null>(null);
   const [sec, setSec] = useState<(typeof SECTIONS)[number]>("Profile");
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -118,6 +125,7 @@ function CustomerDetail({ userId, onBack }: { userId: number; onBack: () => void
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
+          <Button disabled={busy} onClick={signInAs}>Log in as customer</Button>
           {suspended
             ? <Button disabled={busy} onClick={() => act("reactivate", "Reactivate profile")}>Reactivate</Button>
             : <Button disabled={busy} variant="destructive" onClick={() => act("suspend", "Suspend all banking", true)}>Suspend all banking</Button>}
