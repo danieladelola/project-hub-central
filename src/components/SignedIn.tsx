@@ -362,6 +362,11 @@ export function SignedInShell({ title, subtitle, actions, wide, children }: { ti
         <Sidebar me={me} />
       </aside>
       <DashboardShell me={me} onLogout={handleLogout} title={title} subtitle={subtitle} actions={actions} wide={wide}>
+        {me.isDemo && (
+          <div role="status" className="mb-6 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm font-medium text-destructive">
+            Demo account – fictional funds. Balances and transactions shown here are not real money and cannot be sent outside this demo.
+          </div>
+        )}
         {children}
       </DashboardShell>
     </div>

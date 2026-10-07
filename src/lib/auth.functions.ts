@@ -299,12 +299,13 @@ export const getMe = createServerFn({ method: "GET" }).handler(async () => {
   if (!token) return null;
   const sql = await db();
   const rows = await sql`select u.id, u.full_name, u.email,
-      exists(select 1 from bank_user_roles r where r.user_id = u.id and r.role = 'admin') as is_admin
+      exists(select 1 from bank_user_roles r where r.user_id = u.id and r.role = 'admin') as is_admin,
+      exists(select 1 from bank_accounts a where a.user_id = u.id and a.is_demo) as is_demo
     from bank_sessions s join bank_users u on u.id = s.user_id
     where s.token = ${token} and s.expires_at > now()`;
   const u = rows[0];
   if (!u) return null;
-  return { id: u.id as number, fullName: u.full_name as string, email: u.email as string, isAdmin: u.is_admin as boolean };
+  return { id: u.id as number, fullName: u.full_name as string, email: u.email as string, isAdmin: u.is_admin as boolean, isDemo: u.is_demo as boolean };
 });
 
 export const logout = createServerFn({ method: "POST" }).handler(async () => {

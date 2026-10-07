@@ -89,7 +89,7 @@ function StatementsPage() {
     const autoTable = (await import("jspdf-autotable")).default;
     const doc = new jsPDF();
     const m = (v: string) => (v ? minorToDecimal(v) : "");
-    doc.setFontSize(16); doc.text("Universal Crest — Account Statement", 14, 18);
+    doc.setFontSize(16); doc.text(s.isDemo ? "DEMO — FICTIONAL FUNDS — NOT A REAL STATEMENT" : "Universal Crest — Account Statement", 14, 18);
     doc.setFontSize(10);
     [`Account holder: ${s.holder}`, `Account: ${s.nickname} (${s.accountNumber}) · ${s.type}`, `Currency: ${s.currency}`,
       `Period: ${s.from} to ${s.to} (UTC)`, `Opening balance: ${m(s.opening)}`].forEach((t, i) => doc.text(t, 14, 28 + i * 6));
