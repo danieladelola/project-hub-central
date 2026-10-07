@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { AccountPage, Panel } from "@/components/AccountPage";
 import { listAccounts, listTransactions } from "@/lib/banking.functions";
-import { formatMinor } from "@/lib/money";
+import { formatMinor, txnStatusBadge } from "@/lib/money";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { DISPUTE_REASONS, cancelDispute, fileDispute, myDisputes } from "@/lib/safety.functions";
