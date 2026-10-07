@@ -24,7 +24,7 @@ export function DashboardHome() {
 
   useEffect(() => {
     setHidden(localStorage.getItem("uc_hide_bal") === "1");
-    load().then((x) => { setD(x); setCur(x.totals[0]?.currency ?? x.accounts[0]?.currency ?? "USD"); }).catch(() => setErr(true));
+    load().then((x) => { setD(x); setCur(x.accounts.find((a) => a.status !== "closed")?.currency ?? "USD"); }).catch(() => setErr(true));
   }, [load]);
   useEffect(() => {
     if (!cur) return;
@@ -39,6 +39,8 @@ export function DashboardHome() {
   if (!d) return <div className="space-y-4" aria-busy="true"><div className="h-28 animate-pulse rounded-lg bg-muted" /><div className="h-48 animate-pulse rounded-lg bg-muted" /></div>;
 
   const alerts = d.accounts.filter((a) => a.status === "restricted" || a.status === "frozen" || a.lowAlert);
+  const openAccounts = d.accounts.filter((a) => a.status !== "closed");
+  const currencies = [...new Set(openAccounts.map((a) => a.currency))];
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
@@ -88,20 +90,23 @@ export function DashboardHome() {
         </section>
       )}
 
-      {/* Totals */}
-      <section aria-label="Balances by currency" className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {d.totals.length === 0 ? (
+      {/* Accounts */}
+      <section aria-label="Your accounts" className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {openAccounts.length === 0 ? (
           <div className="rounded-lg border bg-card p-6 md:col-span-3">
             <p className="font-medium">You don't have an open account yet.</p>
             <p className="mt-1 text-sm text-muted-foreground">Open a savings or checking account to get started.</p>
             <Button asChild className="mt-4 min-h-11"><Link to="/accounts"><Plus /> Open an account</Link></Button>
           </div>
-        ) : d.totals.map((t) => (
-          <article key={t.currency} className="rounded-lg border bg-primary p-5 text-primary-foreground shadow-sm">
-            <p className="text-xs font-semibold uppercase opacity-80">Total balance · {t.currency}</p>
-            <p className="mt-3 font-serif text-3xl">{money(t.current, t.currency)}</p>
-            <p className="mt-2 text-sm opacity-80">Available {money(t.available, t.currency)}</p>
-          </article>
+        ) : openAccounts.map((a) => (
+          <Link key={a.id} to="/accounts/$accountId" params={{ accountId: String(a.id) }} className="block rounded-lg border bg-primary p-5 text-primary-foreground shadow-sm transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <div className="flex items-center justify-between gap-2">
+              <p className="truncate text-xs font-semibold uppercase opacity-80">{a.nickname || (a.type === "checking" ? "Checking" : a.type === "savings" ? "Savings" : a.type)}</p>
+              <p className="font-mono text-xs opacity-70">{a.masked}</p>
+            </div>
+            <p className="mt-3 font-serif text-3xl">{money(a.current, a.currency)}</p>
+            <p className="mt-2 text-sm opacity-80">Available {money(a.available, a.currency)}</p>
+          </Link>
         ))}
       </section>
 
@@ -111,9 +116,9 @@ export function DashboardHome() {
         <section aria-labelledby="flow-h" className="rounded-lg border bg-card p-5 shadow-sm lg:col-span-2">
           <div className="flex flex-wrap items-center gap-2">
             <h3 id="flow-h" className="mr-auto font-sans text-lg font-semibold">Money in &amp; out</h3>
-            {d.totals.length > 1 && (
+            {currencies.length > 1 && (
               <select aria-label="Currency" value={cur ?? ""} onChange={(e) => setCur(e.target.value)} className="h-9 rounded-md border bg-background px-2 text-sm">
-                {d.totals.map((t) => <option key={t.currency}>{t.currency}</option>)}
+                {currencies.map((c) => <option key={c}>{c}</option>)}
               </select>
             )}
             <select aria-label="Period" value={days} onChange={(e) => setDays(Number(e.target.value) as Days)} className="h-9 rounded-md border bg-background px-2 text-sm">
