@@ -727,3 +727,24 @@ export const adminDeleteCustomer = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Could not delete this customer. Please try again." };
     }
   });
+
+/** Admin signs in as a customer (session replaces the admin's own; audited). */
+export const adminLoginAsCustomer = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => z.object({ userId: id }).parse(d))
+  .handler(async ({ data }) => {
+    const actor = await adminId();
+    const sql = await db();
+    const u = (await sql`select id, status from bank_users where id = ${data.userId}`)[0];
+    if (!u) return { ok: false as const, error: "Customer not found." };
+    const { randomToken, SESSION_COOKIE } = await import("./session.server");
+    const { setCookie } = await import("@tanstack/react-start/server");
+    const { audit } = await lib();
+    const token = randomToken();
+    await sql.begin(async (tx: any) => {
+      await tx`insert into bank_sessions (token, user_id, expires_at, ip, user_agent)
+        values (${token}, ${data.userId}, now() + interval '2 hours', null, ${"admin-login-as:" + actor})`;
+      await audit(tx, data.userId, actor, "admin.login_as_customer", {});
+    });
+    setCookie(SESSION_COOKIE, token, { httpOnly: true, secure: true, sameSite: "none", partitioned: true, path: "/", maxAge: 60 * 60 * 2 });
+    return { ok: true as const };
+  });
