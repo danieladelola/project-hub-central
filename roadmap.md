@@ -1,0 +1,17 @@
+# Roadmap
+- [x] Apply selected homepage exchange design and center the header menu; verify appearance and navigation.
+- [x] Professionalize the complete customer journey from registration and email confirmation through sign-in and the account dashboard
+- [ ] Dashboard + Bank Accounts brief (uploaded): accounts, ledger, holds, statements (PDF/CSV/print), beneficiaries, receive, notifications, audit, admin ledger tools
+- [x] Professionally review and correct alignment, responsiveness, and controls across all Main Menu banking pages
+- [x] Keep account balances below the Send Money account selector, not inside its option text
+- [x] Admin can see and reply to support tickets
+- [x] Admin tools to review tax refunds
+- Later (not this stage): transfers, bill payments, cards
+- [x] Admin holds screen (already existed in Holds tab)
+- [x] Admin session list/revoke + force password reset
+- [x] Account closing requests + admin final-balance close
+- [x] CSV exports + monthly summary report
+- [x] Staff management + per-staff activity
+- [x] Scheduled / recurring transfers (monthly standing orders)
+- [x] Early loan payoff panel (remaining balance, payoff amount, interest saved)
+- [x] Admin Settings section (general, branding, header/footer, SEO, social, email, alerts, security, maintenance, system)
