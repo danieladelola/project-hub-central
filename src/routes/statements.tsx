@@ -74,6 +74,7 @@ function StatementsPage() {
   function exportCsv() {
     if (!s) return;
     const rows = [
+      ...(s.isDemo ? [["DEMO — FICTIONAL FUNDS — NOT A REAL STATEMENT"]] : []),
       ["Account holder", s.holder], ["Account", `${s.nickname} (${s.accountNumber})`], ["Currency", s.currency],
       ["Period (UTC)", `${s.from} to ${s.to}`], ["Opening balance", minorToDecimal(s.opening)], [],
       ["Date", "Description", "Reference", "Debit", "Credit", "Balance"],

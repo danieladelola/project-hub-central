@@ -39,3 +39,12 @@ export const statusTone: Record<string, "default" | "secondary" | "destructive" 
 export function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }
+
+/** Customer-facing label + classes for a txn status; posted shows direction instead of "Completed". */
+export function txnStatusBadge(status: string, amount: string) {
+  if (status === "posted") return amount.startsWith("-")
+    ? { label: "Sent", className: "border-transparent bg-destructive/15 text-destructive" }
+    : { label: "Received", className: "border-transparent bg-primary/15 text-primary" };
+  if (status === "pending") return { label: "Pending", className: "border-transparent bg-secondary text-secondary-foreground" };
+  return { label: "Cancelled", className: "border-transparent bg-muted text-muted-foreground" };
+}
