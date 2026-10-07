@@ -4,6 +4,7 @@
 //     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
@@ -12,4 +13,19 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Docker/Coolify builds set DOCKER_BUILD=1 to get a Node server bundle
+  // instead of the default edge target. worker-mailer imports the Workers-only
+  // "cloudflare:sockets" module, so alias it to a stub for the Node build.
+  ...(process.env["DOCKER_BUILD"] || process.env["NITRO_PRESET"] === "node-server"
+    ? {
+        nitro: { preset: "node-server" },
+        vite: {
+          resolve: {
+            alias: {
+              "cloudflare:sockets": fileURLToPath(new URL("./src/lib/cloudflare-sockets.stub.ts", import.meta.url)),
+            },
+          },
+        },
+      }
+    : {}),
 });

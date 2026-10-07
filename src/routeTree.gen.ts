@@ -10,33 +10,579 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as AccountsRouteImport } from './routes/accounts'
+import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
+import { Route as BusinessRouteImport } from './routes/business'
+import { Route as CardsRouteImport } from './routes/cards'
+import { Route as ConvertRouteImport } from './routes/convert'
+import { Route as CreditCardsRouteImport } from './routes/credit-cards'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as KycRouteImport } from './routes/kyc'
+import { Route as LoanHistoryRouteImport } from './routes/loan-history'
+import { Route as LoanRequestRouteImport } from './routes/loan-request'
+import { Route as LoansRouteImport } from './routes/loans'
+import { Route as LocalTransferRouteImport } from './routes/local-transfer'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as PersonalRouteImport } from './routes/personal'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ReceiveRouteImport } from './routes/receive'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as SendRouteImport } from './routes/send'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StandingOrdersRouteImport } from './routes/standing-orders'
+import { Route as StatementsRouteImport } from './routes/statements'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as SupportTicketRouteImport } from './routes/support-ticket'
+import { Route as TaxRefundRouteImport } from './routes/tax-refund'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TransactionsRouteImport } from './routes/transactions'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as WireRouteImport } from './routes/wire'
+import { Route as AccountsIndexRouteImport } from './routes/accounts.index'
+import { Route as AccountsAccountIdRouteImport } from './routes/accounts.$accountId'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as ApiAvatarRouteImport } from './routes/api/avatar'
+import { Route as ApiBrandSlotRouteImport } from './routes/api/brand.$slot'
+import { Route as ApiKycUploadRouteImport } from './routes/api/kyc.upload'
+import { Route as ApiKycFileIdRouteImport } from './routes/api/kyc.file.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountsRoute = AccountsRouteImport.update({
+  id: '/accounts',
+  path: '/accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeneficiariesRoute = BeneficiariesRouteImport.update({
+  id: '/beneficiaries',
+  path: '/beneficiaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessRoute = BusinessRouteImport.update({
+  id: '/business',
+  path: '/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CardsRoute = CardsRouteImport.update({
+  id: '/cards',
+  path: '/cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConvertRoute = ConvertRouteImport.update({
+  id: '/convert',
+  path: '/convert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditCardsRoute = CreditCardsRouteImport.update({
+  id: '/credit-cards',
+  path: '/credit-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KycRoute = KycRouteImport.update({
+  id: '/kyc',
+  path: '/kyc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanHistoryRoute = LoanHistoryRouteImport.update({
+  id: '/loan-history',
+  path: '/loan-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanRequestRoute = LoanRequestRouteImport.update({
+  id: '/loan-request',
+  path: '/loan-request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoansRoute = LoansRouteImport.update({
+  id: '/loans',
+  path: '/loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalTransferRoute = LocalTransferRouteImport.update({
+  id: '/local-transfer',
+  path: '/local-transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonalRoute = PersonalRouteImport.update({
+  id: '/personal',
+  path: '/personal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceiveRoute = ReceiveRouteImport.update({
+  id: '/receive',
+  path: '/receive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SendRoute = SendRouteImport.update({
+  id: '/send',
+  path: '/send',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StandingOrdersRoute = StandingOrdersRouteImport.update({
+  id: '/standing-orders',
+  path: '/standing-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatementsRoute = StatementsRouteImport.update({
+  id: '/statements',
+  path: '/statements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportTicketRoute = SupportTicketRouteImport.update({
+  id: '/support-ticket',
+  path: '/support-ticket',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TaxRefundRoute = TaxRefundRouteImport.update({
+  id: '/tax-refund',
+  path: '/tax-refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WireRoute = WireRouteImport.update({
+  id: '/wire',
+  path: '/wire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountsIndexRoute = AccountsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountsRoute,
+} as any)
+const AccountsAccountIdRoute = AccountsAccountIdRouteImport.update({
+  id: '/$accountId',
+  path: '/$accountId',
+  getParentRoute: () => AccountsRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAvatarRoute = ApiAvatarRouteImport.update({
+  id: '/api/avatar',
+  path: '/api/avatar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBrandSlotRoute = ApiBrandSlotRouteImport.update({
+  id: '/api/brand/$slot',
+  path: '/api/brand/$slot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiKycUploadRoute = ApiKycUploadRouteImport.update({
+  id: '/api/kyc/upload',
+  path: '/api/kyc/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiKycFileIdRoute = ApiKycFileIdRouteImport.update({
+  id: '/api/kyc/file/$id',
+  path: '/api/kyc/file/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/accounts': typeof AccountsRouteWithChildren
+  '/beneficiaries': typeof BeneficiariesRoute
+  '/business': typeof BusinessRoute
+  '/cards': typeof CardsRoute
+  '/convert': typeof ConvertRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/kyc': typeof KycRoute
+  '/loan-history': typeof LoanHistoryRoute
+  '/loan-request': typeof LoanRequestRoute
+  '/loans': typeof LoansRoute
+  '/local-transfer': typeof LocalTransferRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/personal': typeof PersonalRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/receive': typeof ReceiveRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/security': typeof SecurityRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/standing-orders': typeof StandingOrdersRoute
+  '/statements': typeof StatementsRoute
+  '/support': typeof SupportRoute
+  '/support-ticket': typeof SupportTicketRoute
+  '/tax-refund': typeof TaxRefundRoute
+  '/terms': typeof TermsRoute
+  '/transactions': typeof TransactionsRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/wire': typeof WireRoute
+  '/accounts/$accountId': typeof AccountsAccountIdRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/api/avatar': typeof ApiAvatarRoute
+  '/accounts/': typeof AccountsIndexRoute
+  '/admin/': typeof AdminIndexRoute
+  '/api/brand/$slot': typeof ApiBrandSlotRoute
+  '/api/kyc/upload': typeof ApiKycUploadRoute
+  '/api/kyc/file/$id': typeof ApiKycFileIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/beneficiaries': typeof BeneficiariesRoute
+  '/business': typeof BusinessRoute
+  '/cards': typeof CardsRoute
+  '/convert': typeof ConvertRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/kyc': typeof KycRoute
+  '/loan-history': typeof LoanHistoryRoute
+  '/loan-request': typeof LoanRequestRoute
+  '/loans': typeof LoansRoute
+  '/local-transfer': typeof LocalTransferRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/personal': typeof PersonalRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/receive': typeof ReceiveRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/security': typeof SecurityRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/standing-orders': typeof StandingOrdersRoute
+  '/statements': typeof StatementsRoute
+  '/support': typeof SupportRoute
+  '/support-ticket': typeof SupportTicketRoute
+  '/tax-refund': typeof TaxRefundRoute
+  '/terms': typeof TermsRoute
+  '/transactions': typeof TransactionsRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/wire': typeof WireRoute
+  '/accounts/$accountId': typeof AccountsAccountIdRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/api/avatar': typeof ApiAvatarRoute
+  '/accounts': typeof AccountsIndexRoute
+  '/admin': typeof AdminIndexRoute
+  '/api/brand/$slot': typeof ApiBrandSlotRoute
+  '/api/kyc/upload': typeof ApiKycUploadRoute
+  '/api/kyc/file/$id': typeof ApiKycFileIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/accounts': typeof AccountsRouteWithChildren
+  '/beneficiaries': typeof BeneficiariesRoute
+  '/business': typeof BusinessRoute
+  '/cards': typeof CardsRoute
+  '/convert': typeof ConvertRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/kyc': typeof KycRoute
+  '/loan-history': typeof LoanHistoryRoute
+  '/loan-request': typeof LoanRequestRoute
+  '/loans': typeof LoansRoute
+  '/local-transfer': typeof LocalTransferRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/personal': typeof PersonalRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/receive': typeof ReceiveRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/security': typeof SecurityRoute
+  '/send': typeof SendRoute
+  '/settings': typeof SettingsRoute
+  '/standing-orders': typeof StandingOrdersRoute
+  '/statements': typeof StatementsRoute
+  '/support': typeof SupportRoute
+  '/support-ticket': typeof SupportTicketRoute
+  '/tax-refund': typeof TaxRefundRoute
+  '/terms': typeof TermsRoute
+  '/transactions': typeof TransactionsRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/wire': typeof WireRoute
+  '/accounts/$accountId': typeof AccountsAccountIdRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/api/avatar': typeof ApiAvatarRoute
+  '/accounts/': typeof AccountsIndexRoute
+  '/admin/': typeof AdminIndexRoute
+  '/api/brand/$slot': typeof ApiBrandSlotRoute
+  '/api/kyc/upload': typeof ApiKycUploadRoute
+  '/api/kyc/file/$id': typeof ApiKycFileIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/account'
+    | '/accounts'
+    | '/beneficiaries'
+    | '/business'
+    | '/cards'
+    | '/convert'
+    | '/credit-cards'
+    | '/faq'
+    | '/forgot-password'
+    | '/kyc'
+    | '/loan-history'
+    | '/loan-request'
+    | '/loans'
+    | '/local-transfer'
+    | '/login'
+    | '/notifications'
+    | '/personal'
+    | '/privacy'
+    | '/profile'
+    | '/receive'
+    | '/register'
+    | '/reset-password'
+    | '/security'
+    | '/send'
+    | '/settings'
+    | '/standing-orders'
+    | '/statements'
+    | '/support'
+    | '/support-ticket'
+    | '/tax-refund'
+    | '/terms'
+    | '/transactions'
+    | '/verify-email'
+    | '/wire'
+    | '/accounts/$accountId'
+    | '/admin/login'
+    | '/api/avatar'
+    | '/accounts/'
+    | '/admin/'
+    | '/api/brand/$slot'
+    | '/api/kyc/upload'
+    | '/api/kyc/file/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/account'
+    | '/beneficiaries'
+    | '/business'
+    | '/cards'
+    | '/convert'
+    | '/credit-cards'
+    | '/faq'
+    | '/forgot-password'
+    | '/kyc'
+    | '/loan-history'
+    | '/loan-request'
+    | '/loans'
+    | '/local-transfer'
+    | '/login'
+    | '/notifications'
+    | '/personal'
+    | '/privacy'
+    | '/profile'
+    | '/receive'
+    | '/register'
+    | '/reset-password'
+    | '/security'
+    | '/send'
+    | '/settings'
+    | '/standing-orders'
+    | '/statements'
+    | '/support'
+    | '/support-ticket'
+    | '/tax-refund'
+    | '/terms'
+    | '/transactions'
+    | '/verify-email'
+    | '/wire'
+    | '/accounts/$accountId'
+    | '/admin/login'
+    | '/api/avatar'
+    | '/accounts'
+    | '/admin'
+    | '/api/brand/$slot'
+    | '/api/kyc/upload'
+    | '/api/kyc/file/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/account'
+    | '/accounts'
+    | '/beneficiaries'
+    | '/business'
+    | '/cards'
+    | '/convert'
+    | '/credit-cards'
+    | '/faq'
+    | '/forgot-password'
+    | '/kyc'
+    | '/loan-history'
+    | '/loan-request'
+    | '/loans'
+    | '/local-transfer'
+    | '/login'
+    | '/notifications'
+    | '/personal'
+    | '/privacy'
+    | '/profile'
+    | '/receive'
+    | '/register'
+    | '/reset-password'
+    | '/security'
+    | '/send'
+    | '/settings'
+    | '/standing-orders'
+    | '/statements'
+    | '/support'
+    | '/support-ticket'
+    | '/tax-refund'
+    | '/terms'
+    | '/transactions'
+    | '/verify-email'
+    | '/wire'
+    | '/accounts/$accountId'
+    | '/admin/login'
+    | '/api/avatar'
+    | '/accounts/'
+    | '/admin/'
+    | '/api/brand/$slot'
+    | '/api/kyc/upload'
+    | '/api/kyc/file/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRoute
+  AccountsRoute: typeof AccountsRouteWithChildren
+  BeneficiariesRoute: typeof BeneficiariesRoute
+  BusinessRoute: typeof BusinessRoute
+  CardsRoute: typeof CardsRoute
+  ConvertRoute: typeof ConvertRoute
+  CreditCardsRoute: typeof CreditCardsRoute
+  FaqRoute: typeof FaqRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  KycRoute: typeof KycRoute
+  LoanHistoryRoute: typeof LoanHistoryRoute
+  LoanRequestRoute: typeof LoanRequestRoute
+  LoansRoute: typeof LoansRoute
+  LocalTransferRoute: typeof LocalTransferRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  PersonalRoute: typeof PersonalRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProfileRoute: typeof ProfileRoute
+  ReceiveRoute: typeof ReceiveRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SecurityRoute: typeof SecurityRoute
+  SendRoute: typeof SendRoute
+  SettingsRoute: typeof SettingsRoute
+  StandingOrdersRoute: typeof StandingOrdersRoute
+  StatementsRoute: typeof StatementsRoute
+  SupportRoute: typeof SupportRoute
+  SupportTicketRoute: typeof SupportTicketRoute
+  TaxRefundRoute: typeof TaxRefundRoute
+  TermsRoute: typeof TermsRoute
+  TransactionsRoute: typeof TransactionsRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
+  WireRoute: typeof WireRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  ApiAvatarRoute: typeof ApiAvatarRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  ApiBrandSlotRoute: typeof ApiBrandSlotRoute
+  ApiKycUploadRoute: typeof ApiKycUploadRoute
+  ApiKycFileIdRoute: typeof ApiKycFileIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +594,359 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accounts': {
+      id: '/accounts'
+      path: '/accounts'
+      fullPath: '/accounts'
+      preLoaderRoute: typeof AccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beneficiaries': {
+      id: '/beneficiaries'
+      path: '/beneficiaries'
+      fullPath: '/beneficiaries'
+      preLoaderRoute: typeof BeneficiariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business': {
+      id: '/business'
+      path: '/business'
+      fullPath: '/business'
+      preLoaderRoute: typeof BusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cards': {
+      id: '/cards'
+      path: '/cards'
+      fullPath: '/cards'
+      preLoaderRoute: typeof CardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/convert': {
+      id: '/convert'
+      path: '/convert'
+      fullPath: '/convert'
+      preLoaderRoute: typeof ConvertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credit-cards': {
+      id: '/credit-cards'
+      path: '/credit-cards'
+      fullPath: '/credit-cards'
+      preLoaderRoute: typeof CreditCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kyc': {
+      id: '/kyc'
+      path: '/kyc'
+      fullPath: '/kyc'
+      preLoaderRoute: typeof KycRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan-history': {
+      id: '/loan-history'
+      path: '/loan-history'
+      fullPath: '/loan-history'
+      preLoaderRoute: typeof LoanHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan-request': {
+      id: '/loan-request'
+      path: '/loan-request'
+      fullPath: '/loan-request'
+      preLoaderRoute: typeof LoanRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loans': {
+      id: '/loans'
+      path: '/loans'
+      fullPath: '/loans'
+      preLoaderRoute: typeof LoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/local-transfer': {
+      id: '/local-transfer'
+      path: '/local-transfer'
+      fullPath: '/local-transfer'
+      preLoaderRoute: typeof LocalTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personal': {
+      id: '/personal'
+      path: '/personal'
+      fullPath: '/personal'
+      preLoaderRoute: typeof PersonalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receive': {
+      id: '/receive'
+      path: '/receive'
+      fullPath: '/receive'
+      preLoaderRoute: typeof ReceiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/send': {
+      id: '/send'
+      path: '/send'
+      fullPath: '/send'
+      preLoaderRoute: typeof SendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/standing-orders': {
+      id: '/standing-orders'
+      path: '/standing-orders'
+      fullPath: '/standing-orders'
+      preLoaderRoute: typeof StandingOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statements': {
+      id: '/statements'
+      path: '/statements'
+      fullPath: '/statements'
+      preLoaderRoute: typeof StatementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support-ticket': {
+      id: '/support-ticket'
+      path: '/support-ticket'
+      fullPath: '/support-ticket'
+      preLoaderRoute: typeof SupportTicketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tax-refund': {
+      id: '/tax-refund'
+      path: '/tax-refund'
+      fullPath: '/tax-refund'
+      preLoaderRoute: typeof TaxRefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wire': {
+      id: '/wire'
+      path: '/wire'
+      fullPath: '/wire'
+      preLoaderRoute: typeof WireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accounts/': {
+      id: '/accounts/'
+      path: '/'
+      fullPath: '/accounts/'
+      preLoaderRoute: typeof AccountsIndexRouteImport
+      parentRoute: typeof AccountsRoute
+    }
+    '/accounts/$accountId': {
+      id: '/accounts/$accountId'
+      path: '/$accountId'
+      fullPath: '/accounts/$accountId'
+      preLoaderRoute: typeof AccountsAccountIdRouteImport
+      parentRoute: typeof AccountsRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/avatar': {
+      id: '/api/avatar'
+      path: '/api/avatar'
+      fullPath: '/api/avatar'
+      preLoaderRoute: typeof ApiAvatarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/brand/$slot': {
+      id: '/api/brand/$slot'
+      path: '/api/brand/$slot'
+      fullPath: '/api/brand/$slot'
+      preLoaderRoute: typeof ApiBrandSlotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/kyc/upload': {
+      id: '/api/kyc/upload'
+      path: '/api/kyc/upload'
+      fullPath: '/api/kyc/upload'
+      preLoaderRoute: typeof ApiKycUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/kyc/file/$id': {
+      id: '/api/kyc/file/$id'
+      path: '/api/kyc/file/$id'
+      fullPath: '/api/kyc/file/$id'
+      preLoaderRoute: typeof ApiKycFileIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AccountsRouteChildren {
+  AccountsAccountIdRoute: typeof AccountsAccountIdRoute
+  AccountsIndexRoute: typeof AccountsIndexRoute
+}
+
+const AccountsRouteChildren: AccountsRouteChildren = {
+  AccountsAccountIdRoute: AccountsAccountIdRoute,
+  AccountsIndexRoute: AccountsIndexRoute,
+}
+
+const AccountsRouteWithChildren = AccountsRoute._addFileChildren(
+  AccountsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRoute,
+  AccountsRoute: AccountsRouteWithChildren,
+  BeneficiariesRoute: BeneficiariesRoute,
+  BusinessRoute: BusinessRoute,
+  CardsRoute: CardsRoute,
+  ConvertRoute: ConvertRoute,
+  CreditCardsRoute: CreditCardsRoute,
+  FaqRoute: FaqRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  KycRoute: KycRoute,
+  LoanHistoryRoute: LoanHistoryRoute,
+  LoanRequestRoute: LoanRequestRoute,
+  LoansRoute: LoansRoute,
+  LocalTransferRoute: LocalTransferRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  PersonalRoute: PersonalRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProfileRoute: ProfileRoute,
+  ReceiveRoute: ReceiveRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SecurityRoute: SecurityRoute,
+  SendRoute: SendRoute,
+  SettingsRoute: SettingsRoute,
+  StandingOrdersRoute: StandingOrdersRoute,
+  StatementsRoute: StatementsRoute,
+  SupportRoute: SupportRoute,
+  SupportTicketRoute: SupportTicketRoute,
+  TaxRefundRoute: TaxRefundRoute,
+  TermsRoute: TermsRoute,
+  TransactionsRoute: TransactionsRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
+  WireRoute: WireRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  ApiAvatarRoute: ApiAvatarRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  ApiBrandSlotRoute: ApiBrandSlotRoute,
+  ApiKycUploadRoute: ApiKycUploadRoute,
+  ApiKycFileIdRoute: ApiKycFileIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
