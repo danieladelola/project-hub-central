@@ -104,7 +104,7 @@ export function DashboardHome() {
               <p className="truncate text-xs font-semibold uppercase opacity-80">{a.nickname || (a.type === "checking" ? "Checking" : a.type === "savings" ? "Savings" : a.type)}</p>
               <p className="font-mono text-xs opacity-70">{a.masked}</p>
             </div>
-            <p className="mt-3 font-serif text-3xl">{money(a.current, a.currency)}</p>
+            <p className="mt-3 text-3xl font-medium tabular-nums">{money(a.current, a.currency)}</p>
             <p className="mt-2 text-sm opacity-80">Available {money(a.available, a.currency)}</p>
           </Link>
         ))}
