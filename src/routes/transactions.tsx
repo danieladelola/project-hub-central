@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { AccountPage, Panel } from "@/components/AccountPage";
 import { listAccounts, listTransactions } from "@/lib/banking.functions";
-import { formatMinor } from "@/lib/money";
+import { formatMinor, txnStatusBadge } from "@/lib/money";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { DISPUTE_REASONS, cancelDispute, fileDispute, myDisputes } from "@/lib/safety.functions";
@@ -53,7 +53,7 @@ function TransactionsPage() {
             {accounts.map((a) => <option key={a.id} value={a.id}>{a.nickname} · {a.currency}</option>)}
           </select></div>
           <div className="space-y-2"><Label htmlFor="tx-status">Status</Label><select id="tx-status" className={`${sel} w-full`} value={status} onChange={(e) => setStatus(e.target.value as Status)}>
-            <option value="all">All statuses</option><option value="posted">Completed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option>
+            <option value="all">All statuses</option><option value="posted">Received / Sent</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option>
           </select></div>
           <div className="space-y-2"><Label htmlFor="tx-direction">Direction</Label><select id="tx-direction" className={`${sel} w-full`} value={direction} onChange={(e) => setDirection(e.target.value as Dir)}>
             <option value="all">Money in & out</option><option value="in">Money in</option><option value="out">Money out</option>
@@ -77,7 +77,7 @@ function TransactionsPage() {
                   <td className="p-3"><p className="font-medium">{r.description}</p>{r.memo && <p className="text-xs text-muted-foreground">{r.memo}</p>}</td>
                   <td className="whitespace-nowrap p-3">{r.accountName} <span className="text-muted-foreground">•••• {r.accountNumber.slice(-4)}</span></td>
                   <td className="p-3 font-mono text-xs">{r.reference}</td>
-                  <td className="p-3"><Badge variant={r.status === "posted" ? "default" : r.status === "pending" ? "secondary" : "outline"}>{r.status === "posted" ? "Completed" : r.status === "pending" ? "Pending" : "Cancelled"}</Badge></td>
+                  <td className="p-3"><Badge variant="outline" className={txnStatusBadge(r.status, r.amount).className}>{txnStatusBadge(r.status, r.amount).label}</Badge></td>
                   <td className={`whitespace-nowrap p-3 text-right font-semibold ${r.amount.startsWith("-") ? "text-destructive" : "text-primary"}`}>{formatMinor(r.amount, r.currency, { signed: true })}</td>
                   <td className="p-3 text-right"><Button size="sm" variant="ghost" onClick={() => setDisputing(r)}>Dispute</Button></td>
                 </tr>

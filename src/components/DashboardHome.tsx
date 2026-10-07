@@ -6,7 +6,7 @@ import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAx
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getCashflow, getDashboard } from "@/lib/banking.functions";
-import { formatMinor, fmtDate, minorToChartNumber, statusTone } from "@/lib/money";
+import { formatMinor, fmtDate, minorToChartNumber, statusTone, txnStatusBadge } from "@/lib/money";
 import { cn } from "@/lib/utils";
 
 type Dash = Awaited<ReturnType<typeof getDashboard>>;
@@ -201,7 +201,7 @@ export function TxnTable({ rows, hidden = false, showAccount = false }: { rows: 
               <td className="whitespace-nowrap py-3">{fmtDate(t.date)}</td>
               <td className="py-3"><p>{t.description}</p><p className="font-mono text-xs text-muted-foreground">{t.reference}</p></td>
               {showAccount && <td className="py-3">{t.accountName}</td>}
-              <td className="py-3"><Badge variant={t.status === "posted" ? "outline" : "secondary"} className="capitalize">{t.status}</Badge></td>
+              <td className="py-3"><Badge variant="outline" className={txnStatusBadge(t.status, t.amount).className}>{txnStatusBadge(t.status, t.amount).label}</Badge></td>
               <td className={cn("whitespace-nowrap py-3 text-right font-medium", t.amount.startsWith("-") ? "" : "text-primary")}>{hidden ? "••••" : formatMinor(t.amount, t.currency, { signed: true })}</td>
             </tr>
           ))}

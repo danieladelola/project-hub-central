@@ -291,7 +291,7 @@ export const getStatement = createServerFn({ method: "POST" })
       from bank_ledger_entries e join bank_ledger_txns t on t.id = e.txn_id
       where e.account_id = ${a.id} and t.status = 'pending' order by t.created_at, e.id`;
     return {
-      holder, nickname: a.nickname as string, type: a.account_type as string, currency: a.currency as string,
+      holder, nickname: a.nickname as string, type: a.account_type as string, currency: a.currency as string, isDemo: Boolean(a.is_demo),
       accountNumber: a.account_number as string, from: data.from, to: data.to, timezone: "UTC",
       opening: opening.toString(), closing: running.toString(), totalDebits: debits.toString(), totalCredits: credits.toString(),
       lines,
