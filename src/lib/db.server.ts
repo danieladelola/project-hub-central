@@ -131,6 +131,22 @@ async function setup() {
   await sql`drop trigger if exists bank_txn_no_change on bank_ledger_txns`;
   await sql`create trigger bank_txn_no_change before update or delete on bank_ledger_txns
     for each row execute function bank_txn_guard()`;
+  await sql`alter table bank_accounts add column if not exists is_demo boolean not null default false`;
+  // Demo (fictional) funds may only move between demo accounts and SYSTEM:DEMO:*; checked at commit.
+  await sql`create or replace function bank_demo_guard() returns trigger language plpgsql as $$
+    begin
+      if exists (select 1 from bank_ledger_entries e join bank_accounts a on a.id = e.account_id
+                 where e.txn_id = new.txn_id and a.is_demo) and exists (
+           select 1 from bank_ledger_entries e left join bank_accounts a on a.id = e.account_id
+           where e.txn_id = new.txn_id and ((e.account_id is not null and not a.is_demo)
+             or (e.system_account is not null and e.system_account not like 'SYSTEM:DEMO:%'))) then
+        raise exception 'Demo account funds are fictional and cannot leave demo accounts.';
+      end if;
+      return null;
+    end $$`;
+  await sql`drop trigger if exists bank_demo_guard on bank_ledger_entries`;
+  await sql`create constraint trigger bank_demo_guard after insert on bank_ledger_entries
+    deferrable initially deferred for each row execute function bank_demo_guard()`;
   await sql`create table if not exists bank_holds (
     id serial primary key,
     account_id int not null references bank_accounts(id) on delete restrict,
