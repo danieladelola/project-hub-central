@@ -39,6 +39,8 @@ export function DashboardHome() {
   if (!d) return <div className="space-y-4" aria-busy="true"><div className="h-28 animate-pulse rounded-lg bg-muted" /><div className="h-48 animate-pulse rounded-lg bg-muted" /></div>;
 
   const alerts = d.accounts.filter((a) => a.status === "restricted" || a.status === "frozen" || a.lowAlert);
+  const openAccounts = d.accounts.filter((a) => a.status !== "closed");
+  const currencies = [...new Set(openAccounts.map((a) => a.currency))];
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
@@ -114,9 +116,9 @@ export function DashboardHome() {
         <section aria-labelledby="flow-h" className="rounded-lg border bg-card p-5 shadow-sm lg:col-span-2">
           <div className="flex flex-wrap items-center gap-2">
             <h3 id="flow-h" className="mr-auto font-sans text-lg font-semibold">Money in &amp; out</h3>
-            {d.totals.length > 1 && (
+            {currencies.length > 1 && (
               <select aria-label="Currency" value={cur ?? ""} onChange={(e) => setCur(e.target.value)} className="h-9 rounded-md border bg-background px-2 text-sm">
-                {d.totals.map((t) => <option key={t.currency}>{t.currency}</option>)}
+                {currencies.map((c) => <option key={c}>{c}</option>)}
               </select>
             )}
             <select aria-label="Period" value={days} onChange={(e) => setDays(Number(e.target.value) as Days)} className="h-9 rounded-md border bg-background px-2 text-sm">
